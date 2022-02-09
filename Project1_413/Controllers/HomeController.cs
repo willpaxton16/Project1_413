@@ -14,9 +14,9 @@ namespace Project1_413.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private taskContext _yeetContext { get; set; }
+        private TaskContext _yeetContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, taskContext yeet)
+        public HomeController(ILogger<HomeController> logger, TaskContext yeet)
         {
             _logger = logger;
             _yeetContext = yeet;
@@ -35,17 +35,17 @@ namespace Project1_413.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateTask(taskResponse tr)
+        public IActionResult CreateTask(TaskResponse tr)
         {
             _yeetContext.Add(tr);
             _yeetContext.SaveChanges();
-            return View("displayTasks");
+            return View("DisplayTasks");
         }
 
         [HttpGet]
         public IActionResult DisplayTasks()
         {
-            var tasks = _yeetContext.taskResponses.Include(x => x.Category).Where(x => x.completed == false).ToList();
+            var tasks = _yeetContext.TaskResponses.Include(x => x.Category).Where(x => x.Completed == false).ToList();
             return View(tasks);
         }
     }

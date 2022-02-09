@@ -27,7 +27,7 @@ namespace Project1_413
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<taskContext>(yeetings =>
+            services.AddDbContext<TaskContext>(yeetings =>
             {
                 yeetings.UseSqlite(Configuration["ConnectionStrings:YeetConnection"]);
             });

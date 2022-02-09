@@ -8,17 +8,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Project1_413.Models
 {
-    public class taskResponse
+    public class TaskResponse
     {
         [Key]
         [Required]
         public int Id { get; set; }
-        public string task { get; set; }
-        public string dueDate { get; set; }
-        public int quadrant { get; set; }
-        public bool completed { get; set; }
+        public string Task { get; set; }
+        public string DueDate { get; set; }
+        public int Quadrant { get; set; }
+        public bool Completed { get; set; }
 
         public int CategoryId { get; set; }
-        public category Category { get; set; }
+        public Category Category { get; set; }
     }
 }
