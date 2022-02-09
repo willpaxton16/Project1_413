@@ -1,5 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Create Task";
 }
+
+@model Project1_413.Models.TaskResponse
+<!--Form page for movies-->
+<div class="text-center">
+    <h1 class="display-4">Movies</h1>
+</div>
+
+<div class="container">
+    <form method="post">
+
+        <div asp-validation-summary="All"></div>
+        <!--Selection For Task-->
+        <label asp-for="Task">Task:</label>
+        <input asp-for="Task" /><br />
+
+        <!--Selection For Due Date-->
+        <label asp-for="DueDate">Due Date:</label>
+        <input asp-for="DueDate" /><br />
+
+        <!--Selection For Quadrant-->
+        <label asp-for="Quadrant">Quadrant:</label>
+        <input asp-for="Quadrant" type="number" /><br />
+
+        <!--Selection For Category. Uses a different category table-->
+        @*<label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId">
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
+        </select><br />*@
+
+        <!--Selection For Completed-->
+        <label asp-for="Completed"></label>
+        <select asp-for="Completed">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <button type="submit">Add</button>
+    </form>
+</div>

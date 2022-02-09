@@ -8,48 +8,48 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Project1_413.Models
 {
-    public class taskContext : DbContext
+    public class TaskContext : DbContext
     {
-        public taskContext(DbContextOptions<taskContext> yeetings) : base (yeetings)
+        public TaskContext(DbContextOptions<TaskContext> yeetings) : base (yeetings)
         {
 
         }
-        public DbSet<taskResponse> taskResponses { get; set; }
-        public DbSet<category> Categories { get; set; }
+        public DbSet<TaskResponse> TaskResponses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            mb.Entity<category>().HasData(
-                    new category
+            mb.Entity<Category>().HasData(
+                    new Category
                     {
                         CategoryId = 1,
-                        Category = "Home"
+                        CategoryName = "Home"
                     },
-                    new category
+                    new Category
                     {
                         CategoryId = 2,
-                        Category = "School"
+                        CategoryName = "School"
                     },
-                    new category
+                    new Category
                     {
                         CategoryId = 3,
-                        Category = "Work"
+                        CategoryName = "Work"
                     },
-                    new category
+                    new Category
                     {
                         CategoryId = 4,
-                        Category = "Church"
+                        CategoryName = "Church"
                     }
                 );
-            mb.Entity<taskResponse>().HasData(
+            mb.Entity<TaskResponse>().HasData(
 
-                new taskResponse
+                new TaskResponse
                 {
                     Id = 1,
-                    task = "test",
-                    completed = false,
-                    quadrant = 1,
-                    dueDate = "2009-01-01",
+                    Task = "test",
+                    Completed = false,
+                    Quadrant = 1,
+                    DueDate = "2009-01-01",
                     CategoryId = 1
                 }
             );

@@ -7,9 +7,9 @@ using Project1_413.Models;
 
 namespace Project1_413.Migrations
 {
-    [DbContext(typeof(taskContext))]
-    [Migration("20220209072333_Models")]
-    partial class Models
+    [DbContext(typeof(TaskContext))]
+    [Migration("20220209194442_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,13 +17,13 @@ namespace Project1_413.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
-            modelBuilder.Entity("Project1_413.Models.category", b =>
+            modelBuilder.Entity("Project1_413.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
+                    b.Property<string>("CategoryName")
                         .HasColumnType("TEXT");
 
                     b.HasKey("CategoryId");
@@ -34,26 +34,26 @@ namespace Project1_413.Migrations
                         new
                         {
                             CategoryId = 1,
-                            Category = "Home"
+                            CategoryName = "Home"
                         },
                         new
                         {
                             CategoryId = 2,
-                            Category = "School"
+                            CategoryName = "School"
                         },
                         new
                         {
                             CategoryId = 3,
-                            Category = "Work"
+                            CategoryName = "Work"
                         },
                         new
                         {
                             CategoryId = 4,
-                            Category = "Church"
+                            CategoryName = "Church"
                         });
                 });
 
-            modelBuilder.Entity("Project1_413.Models.taskResponse", b =>
+            modelBuilder.Entity("Project1_413.Models.TaskResponse", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,39 +62,39 @@ namespace Project1_413.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("completed")
+                    b.Property<bool>("Completed")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("dueDate")
+                    b.Property<string>("DueDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("quadrant")
+                    b.Property<int>("Quadrant")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("task")
+                    b.Property<string>("Task")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("taskResponses");
+                    b.ToTable("TaskResponses");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             CategoryId = 1,
-                            completed = false,
-                            dueDate = "2009-01-01",
-                            quadrant = 1,
-                            task = "test"
+                            Completed = false,
+                            DueDate = "2009-01-01",
+                            Quadrant = 1,
+                            Task = "test"
                         });
                 });
 
-            modelBuilder.Entity("Project1_413.Models.taskResponse", b =>
+            modelBuilder.Entity("Project1_413.Models.TaskResponse", b =>
                 {
-                    b.HasOne("Project1_413.Models.category", "Category")
+                    b.HasOne("Project1_413.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
