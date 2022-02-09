@@ -25,14 +25,14 @@
         <input asp-for="Quadrant" type="number" /><br />
 
         <!--Selection For Category. Uses a different category table-->
-        <label asp-for="CategoryId">Category:</label>
+        <!--<label asp-for="CategoryId">Category:</label>
         <select asp-for="CategoryId">
             <option value="">Select a Category</option>
             @foreach (Category c in ViewBag.Categories)
             {
-                <option value="@c.CategoryID">@c.CategoryName</option>
+            <option value="@c.CategoryID">@c.CategoryName</option>
             }
-        </select><br />
+        </select><br />-->
 
         <!--Selection For Completed-->
         <label asp-for="Completed"></label>
