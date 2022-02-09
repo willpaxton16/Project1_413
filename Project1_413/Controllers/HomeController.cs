@@ -28,14 +28,14 @@ namespace Project1_413.Controllers
         }
 
         [HttpGet]
-        public IActionResult createTask()
+        public IActionResult CreateTask()
         {
             ViewBag.Categories = _yeetContext.Categories.ToList();
             return View();
         }
 
         [HttpPost]
-        public IActionResult createTask(taskResponse tr)
+        public IActionResult CreateTask(taskResponse tr)
         {
             _yeetContext.Add(tr);
             _yeetContext.SaveChanges();
@@ -43,7 +43,7 @@ namespace Project1_413.Controllers
         }
 
         [HttpGet]
-        public IActionResult displayTasks()
+        public IActionResult DisplayTasks()
         {
             var tasks = _yeetContext.taskResponses.Include(x => x.Category).Where(x => x.completed == false).ToList();
             return View(tasks);
