@@ -39,15 +39,15 @@ namespace Project1_413.Controllers
         {
             _yeetContext.Add(tr);
             _yeetContext.SaveChanges();
-            return View("DisplayTasks");
+            return View("Index");
         }
 
-        [HttpGet]
-        public IActionResult DisplayTasks()
-        {
-            var tasks = _yeetContext.TaskResponses.Include(x => x.Category).Where(x => x.Completed == false).ToList();
-            return View(tasks);
-        }
+        //[HttpGet]
+        //public IActionResult DisplayTasks()
+        //{
+        //    var tasks = _yeetContext.TaskResponses.Include(x => x.Category).Where(x => x.Completed == false).ToList();
+        //    return View(tasks);
+        //}
 
         [HttpGet]
         public IActionResult Edit(string taskId)
