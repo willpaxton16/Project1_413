@@ -12,9 +12,10 @@ namespace Project1_413.Models
     {
         [Key]
         [Required]
-        public int Id { get; set; }
         public string Task { get; set; }
         public string DueDate { get; set; }
+
+        [Required]
         public int Quadrant { get; set; }
         public bool Completed { get; set; }
 
