@@ -23,23 +23,23 @@
                     
                     @foreach (var x in Model)
                     {
-                    @if (x.Quadrant == 1)
-                    {
-                    <tr>
-                        <td>@x.Task</td>
-                        <td>@x.DueDate</td>
-                        <td>@x.Quadrant</td>
-                        <td>@x.CategoryId</td>
-                        <td>@x.Completed</td>
+                        @if (x.Quadrant == 1)
+                        {
+                        <tr>
+                            <td>@x.Task</td>
+                            <td>@x.DueDate</td>
+                            <td>@x.Quadrant</td>
+                            <td>@x.Category.CategoryName</td>
+                            <td>@x.Completed</td>
 
-                        <td>
-                            <a asp-controller="Home" asp-action="Edit" asp-route-id="@x.Task">Edit</a>
-                        </td>
-                        <td>
-                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@x.Task">Delete</a>
-                        </td>
-                    </tr>
-                    }
+                            <td>
+                                <a asp-controller="Home" asp-action="Edit" asp-route-id="@x.Task">Edit</a>
+                            </td>
+                            <td>
+                                <a asp-controller="Home" asp-action="Delete" asp-route-id="@x.Task">Delete</a>
+                            </td>
+                        </tr>
+                        }
                     }
                 </tbody>
             </table>
@@ -67,7 +67,7 @@
                         <td>@x.Task</td>
                         <td>@x.DueDate</td>
                         <td>@x.Quadrant</td>
-                        <td>@x.CategoryId</td>
+                        <td>@x.Category.CategoryName</td>
                         <td>@x.Completed</td>
 
                         <td>
@@ -109,7 +109,7 @@
                         <td>@x.Task</td>
                         <td>@x.DueDate</td>
                         <td>@x.Quadrant</td>
-                        <td>@x.CategoryId</td>
+                        <td>@x.Category.CategoryName</td>
                         <td>@x.Completed</td>
 
                         <td>
@@ -147,7 +147,7 @@
                         <td>@x.Task</td>
                         <td>@x.DueDate</td>
                         <td>@x.Quadrant</td>
-                        <td>@x.CategoryId</td>
+                        <td>@x.Category.CategoryName</td>
                         <td>@x.Completed</td>
 
                         <td>

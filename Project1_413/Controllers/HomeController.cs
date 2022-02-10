@@ -24,8 +24,8 @@ namespace Project1_413.Controllers
 
         public IActionResult Index()
         {
-            var application = _yeetContext.TaskResponses.ToList();
-            return View(application);
+            var tasks = _yeetContext.TaskResponses.Include(x => x.Category).Where(x => x.Completed == false).ToList();
+            return View(tasks);
         }
 
         [HttpGet]
@@ -40,7 +40,8 @@ namespace Project1_413.Controllers
         {
             _yeetContext.Add(tr);
             _yeetContext.SaveChanges();
-            return View("Index");
+            var tasks = _yeetContext.TaskResponses.Include(x => x.Category).Where(x => x.Completed == false).ToList();
+            return View("Index", tasks);
         }
 
         //[HttpGet]
