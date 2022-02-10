@@ -8,7 +8,7 @@ using Project1_413.Models;
 namespace Project1_413.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20220209194442_Initial")]
+    [Migration("20220210060436_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,9 +55,8 @@ namespace Project1_413.Migrations
 
             modelBuilder.Entity("Project1_413.Models.TaskResponse", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Task")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
@@ -71,10 +70,7 @@ namespace Project1_413.Migrations
                     b.Property<int>("Quadrant")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Task")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
+                    b.HasKey("Task");
 
                     b.HasIndex("CategoryId");
 
@@ -83,12 +79,11 @@ namespace Project1_413.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Task = "test",
                             CategoryId = 1,
                             Completed = false,
                             DueDate = "2009-01-01",
-                            Quadrant = 1,
-                            Task = "test"
+                            Quadrant = 1
                         });
                 });
 

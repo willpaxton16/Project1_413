@@ -53,9 +53,8 @@ namespace Project1_413.Migrations
 
             modelBuilder.Entity("Project1_413.Models.TaskResponse", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Task")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
@@ -69,10 +68,7 @@ namespace Project1_413.Migrations
                     b.Property<int>("Quadrant")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Task")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
+                    b.HasKey("Task");
 
                     b.HasIndex("CategoryId");
 
@@ -81,12 +77,11 @@ namespace Project1_413.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Task = "test",
                             CategoryId = 1,
                             Completed = false,
                             DueDate = "2009-01-01",
-                            Quadrant = 1,
-                            Task = "test"
+                            Quadrant = 1
                         });
                 });
 

@@ -23,9 +23,7 @@ namespace Project1_413.Migrations
                 name: "TaskResponses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Task = table.Column<string>(nullable: true),
+                    Task = table.Column<string>(nullable: false),
                     DueDate = table.Column<string>(nullable: true),
                     Quadrant = table.Column<int>(nullable: false),
                     Completed = table.Column<bool>(nullable: false),
@@ -33,7 +31,7 @@ namespace Project1_413.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TaskResponses", x => x.Id);
+                    table.PrimaryKey("PK_TaskResponses", x => x.Task);
                     table.ForeignKey(
                         name: "FK_TaskResponses_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -64,8 +62,8 @@ namespace Project1_413.Migrations
 
             migrationBuilder.InsertData(
                 table: "TaskResponses",
-                columns: new[] { "Id", "CategoryId", "Completed", "DueDate", "Quadrant", "Task" },
-                values: new object[] { 1, 1, false, "2009-01-01", 1, "test" });
+                columns: new[] { "Task", "CategoryId", "Completed", "DueDate", "Quadrant" },
+                values: new object[] { "test", 1, false, "2009-01-01", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_TaskResponses_CategoryId",

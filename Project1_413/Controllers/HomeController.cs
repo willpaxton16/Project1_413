@@ -24,7 +24,8 @@ namespace Project1_413.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var application = _yeetContext.TaskResponses.ToList();
+            return View(application);
         }
 
         [HttpGet]
@@ -50,10 +51,10 @@ namespace Project1_413.Controllers
         //}
 
         [HttpGet]
-        public IActionResult Edit(string taskId)
+        public IActionResult Edit(string id)
         {
             ViewBag.Categories = _yeetContext.Categories.ToList();
-            var taskEntry = _yeetContext.TaskResponses.Single(x => x.Task == taskId);
+            var taskEntry = _yeetContext.TaskResponses.Single(x => x.Task == id);
             return View("createTask", taskEntry);
         }
 
@@ -63,8 +64,22 @@ namespace Project1_413.Controllers
             _yeetContext.Update(tr);
             _yeetContext.SaveChanges();
 
-            return RedirectToAction("DisplayTasks");
+            return RedirectToAction("Index");
         }
 
+
+        [HttpGet]
+        public IActionResult Delete(string id)
+        {
+            var movie = _yeetContext.TaskResponses.Single(x => x.Task == id);
+            return View(movie);
+        }
+        [HttpPost]
+        public IActionResult Delete(TaskResponse tr)
+        {
+            _yeetContext.TaskResponses.Remove(tr);
+            _yeetContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
