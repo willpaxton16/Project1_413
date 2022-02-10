@@ -48,5 +48,23 @@ namespace Project1_413.Controllers
             var tasks = _yeetContext.TaskResponses.Include(x => x.Category).Where(x => x.Completed == false).ToList();
             return View(tasks);
         }
+
+        [HttpGet]
+        public IActionResult Edit(string taskId)
+        {
+            ViewBag.Categories = _yeetContext.Categories.ToList();
+            var taskEntry = _yeetContext.TaskResponses.Single(x => x.Task == taskId);
+            return View("createTask", taskEntry);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(TaskResponse tr)
+        {
+            _yeetContext.Update(tr);
+            _yeetContext.SaveChanges();
+
+            return RedirectToAction("DisplayTasks");
+        }
+
     }
 }
